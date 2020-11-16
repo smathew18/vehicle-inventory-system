@@ -13,7 +13,7 @@ class Vehicle(models.Model):
     vehicle_brand = models.CharField(max_length=60,blank=False,null=False,default='')
     vehicle_model = models.CharField(max_length=30, blank=False, null=False, default='')
     vehicle_status = models.CharField(max_length=30, blank=False, null=False, default='')
-    inventoryadmin_email = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
+    inventoryadmincontact = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.vehicle_name)
@@ -43,7 +43,7 @@ class PurchaseOrder(models.Model):
      totalnumberordered = models.IntegerField()
      purchaseorder_status = models.CharField(max_length=30, blank=False, null=False, default='')
      vehicle_name = models.ForeignKey(Vehicle, on_delete=models.CASCADE, related_name='vehicles')
-     supplier_email = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
+     suppliercontact = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
      vehicle_availabilityId = models.ForeignKey(VehicleAvailability, on_delete=models.CASCADE)
 
      def __str__(self):
